@@ -1,0 +1,16 @@
+model TechnicianProfile {
+  id           String    @id @default(uuid())
+  userId       String    @unique
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skills       String[]
+  experience   String
+  pricing      Float
+  rating       Float     @default(0.0)
+  location     String?
+  availability String[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  services     Service[]
+  bookings     Booking[]
+  reviews      Review[]
+}
